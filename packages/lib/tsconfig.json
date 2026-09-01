@@ -28,6 +28,6 @@
         // they're the closest thing to what we need (and the only official ones).
         "types": ["node"]
     },
-    "include": ["eslint.config.ts", "src/**/*.ts", "tests/**/*.ts"],
+    "include": ["eslint.config.ts", "scripts/**/*.ts", "src/**/*.ts", "tests/**/*.ts"],
     "exclude": ["node_modules", "dist"]
 }

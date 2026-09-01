@@ -29,7 +29,8 @@
         "format": "bunx prettier --write .",
         "format:check": "bunx prettier --check .",
         "lint": "bunx eslint .",
-        "lint:fix": "bunx eslint --fix ."
+        "lint:fix": "bunx eslint --fix .",
+        "build": "bun ./scripts/BuildLibraryScript.ts"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
