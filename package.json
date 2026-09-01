@@ -1,56 +1,24 @@
 {
-    "name": "webhook-api",
-    "description": "A library that makes Discord webhook simpler for Minecraft: Bedrock Edition Vanilla software.",
+    "name": "bedrock-discord",
+    "description": "An easy way to interact with Discord API via Bedrock Add-ons.",
     "version": "1.0.0",
-    "private": false,
-    "license": "Apache-2.0",
-    "type": "module",
+    "private": true,
     "author": {
-        "name": "m0lc14kk",
-        "email": "olek@m0lc14kk.com",
-        "url": "https://m0lc14kk.com"
+        "name": "oliverperzyk (Oliwier Perzyński)",
+        "email": "olek@oliverperzyk.com",
+        "url": "https://oliverperzyk.com"
     },
-    "keywords": [
-        "webhook-api",
-        "discord webhooks",
-        "minecraft discord"
-    ],
-    "main": "./src/Main.ts",
-    "types": "./src/Main.ts",
-    "scripts": {
-        "build": "bunx tsup && bun run ./scripts/build-library.ts",
-        "format": "bunx prettier --write .",
-        "lint": "bunx eslint .",
-        "prepare": "husky"
+    "homepage": "https://bedrock-discord.oliverperzyk.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/oliverperzyk/bedrock-discord.git"
     },
-    "lint-staged": {
-        "*.{ts,json,jsonc,md}": [
-            "bunx eslint --fix",
-            "bunx prettier --write"
-        ]
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/oliverperzyk/bedrock-discord/issues"
     },
     "engines": {
-        "node": ">=1.0.0",
-        "bun": ">=1.0.0"
+        "bun": ">=1.3.0"
     },
-    "dependencies": {
-        "@minecraft/server-net": "1.0.0-beta.11940b24"
-    },
-    "devDependencies": {
-        "@eslint/js": "^10.0.1",
-        "@eslint/json": "^1.0.1",
-        "@eslint/markdown": "^7.5.1",
-        "@minecraft/server": "2.4.0",
-        "@types/node": "^26.1.0",
-        "eslint": "^10.0.0",
-        "globals": "^17.3.0",
-        "husky": "^9.1.7",
-        "jiti": "^2.6.1",
-        "lint-staged": "^16.2.7",
-        "path": "^0.12.7",
-        "prettier": "^3.8.1",
-        "process": "^0.11.10",
-        "tsup": "^8.5.1",
-        "typescript-eslint": "^8.56.0"
-    }
+    "scripts": {}
 }

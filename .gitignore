@@ -1,20 +1,24 @@
-# Package typings.
-/node_modules/
-
-# Unused JavaScript distribution.
-/dist/
-/src/**/*.js
-
 # IDE files.
-/.vscode/
-/.vs/
-/.idea/
+/**/.idea/
+/**/.vscode/
+/**/.vs/
+/**/.cursor/
+# AI files.
+/**/.claude/
+/**/.codex/
+/**/.ai/
 
-# Keep VS Code recommended extensions in Git. 
-!.vscode/extensions.json
+# Dependencies & distribution files.
+/**/node_modules/
+/**/dist/
+/**/out/
+/**/build/
+/**/*.tsbuildinfo
 
-# macOS file
-.DS_Store*
+# Environment variables files.
+/**/*.env*
+!/**/.env.example
 
-# File for testing HTTP requests.
-.rest
+# Operating system files.
+/**/*.DS_Store*
+/**/*.ini*
