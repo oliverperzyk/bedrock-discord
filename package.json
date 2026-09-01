@@ -20,5 +20,11 @@
     "engines": {
         "bun": ">=1.3.0"
     },
-    "scripts": {}
+    "scripts": {
+        "format": "bunx prettier --write .",
+        "format:check": "bunx prettier --check ."
+    },
+    "devDependencies": {
+        "prettier": "^3.9.6"
+    }
 }

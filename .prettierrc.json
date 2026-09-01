@@ -1,0 +1,26 @@
+{
+    "semi": false,
+    "useTabs": false,
+    "tabWidth": 4,
+    "printWidth": 120,
+    "singleQuote": false,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "endOfLine": "auto",
+    "bracketSpacing": true,
+    "overrides": [
+        {
+            "files": "**/*.{json,json5,jsonc}",
+            "options": {
+                "trailingComma": "none",
+                "printWidth": 80
+            }
+        },
+        {
+            "files": "**/*.{yml,yaml}",
+            "options": {
+                "printWidth": 80
+            }
+        }
+    ]
+}
