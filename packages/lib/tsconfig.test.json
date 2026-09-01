@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        // Compiler options.
+        "noEmit": true,
+
+        // Strictness & language service options.
+        // Bun is only used by tests to improve their performance.
+        "types": ["bun", "node"]
+    },
+    "include": ["./tests/**/*.ts"]
+}

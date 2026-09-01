@@ -1,0 +1,33 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        // Compiler options.
+        "noEmit": true,
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "skipLibCheck": true,
+
+        // Strictness & language service options.
+        "strict": true,
+        "alwaysStrict": true,
+        "allowJs": false,
+        "checkJs": false,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "esModuleInterop": true,
+        // Even though, Node's typings are not fully covered by the engine,
+        // they're the closest thing to what we need (and the only official ones).
+        "types": ["node"]
+    },
+    "include": ["eslint.config.ts", "src/**/*.ts", "tests/**/*.ts"],
+    "exclude": ["node_modules", "dist"]
+}
