@@ -1,0 +1,31 @@
+# IDE files.
+/**/.idea/
+/**/.vscode/
+/**/.vs/
+/**/.cursor/
+# AI files.
+/**/.claude/
+/**/.codex/
+/**/.ai/
+
+# Dependencies & distribution files.
+/**/node_modules/
+/**/dist/
+/**/out/
+/**/build/
+/**/*.tsbuildinfo
+
+# Environment variables files.
+/**/*.env*
+
+# Files related to development environment.
+/.prettierrc.json
+/.prettierignore
+/tests/
+/bunfig.toml
+/eslint.config.ts
+/tsconfig.test.json
+
+# Operating system files.
+/**/*.DS_Store*
+/**/*.ini*
