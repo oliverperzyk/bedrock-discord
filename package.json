@@ -22,9 +22,16 @@
     },
     "scripts": {
         "format": "bunx prettier --write .",
-        "format:check": "bunx prettier --check ."
+        "format:check": "bunx prettier --check .",
+        "lint": "bunx eslint .",
+        "lint:fix": "bunx eslint --fix ."
     },
     "devDependencies": {
-        "prettier": "^3.9.6"
+        "@eslint/js": "^10.0.1",
+        "@eslint/json": "^2.1.0",
+        "@eslint/markdown": "^8.0.3",
+        "eslint": "^10.9.1",
+        "prettier": "^3.9.6",
+        "typescript": "^7.0.2"
     }
 }
