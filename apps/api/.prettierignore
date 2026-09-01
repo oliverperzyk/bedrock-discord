@@ -1,0 +1,29 @@
+# IDE files.
+/.idea/
+/.vscode/
+/.vs/
+/.cursor/
+
+# Dependencies & distribution files.
+/**/node_modules/
+/**/dist/
+/**/out/
+/**/build/
+/**/*.tsbuildinfo
+/**/*.js
+/**/*.cjs
+/**/*.mjs
+!/**/postcss.config.js
+
+# Environment variables files.
+/**/*.env*
+!/**/.env.example
+
+# Packages' & apps' files.
+# They'll have their own configuration files.
+/packages/
+/apps/
+
+# Operating system files.
+/**/*.DS_Store*
+/**/*.ini*
