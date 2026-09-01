@@ -24,5 +24,8 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
-    "scripts": {}
+    "scripts": {},
+    "devDependencies": {
+        "prettier": "^3.9.6"
+    }
 }
