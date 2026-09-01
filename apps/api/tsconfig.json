@@ -1,0 +1,51 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        // Compiler options.
+        "target": "ES2022",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "jsx": "react-jsx",
+        "noEmit": true,
+        "incremental": true,
+        "isolatedModules": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "removeComments": false,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        "types": ["node", "bun"],
+
+        // Strictness & language service options.
+        "strict": true,
+        "alwaysStrict": true,
+        "allowJs": false,
+        "checkJs": false,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "esModuleInterop": true,
+
+        // Paths.
+        "paths": {
+            "@/oliverperzyk/*": ["./src/*"]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "scripts/**/*.ts",
+        "eslint.config.ts",
+    ],
+    "exclude": ["node_modules/**", "dist/**"]
+}

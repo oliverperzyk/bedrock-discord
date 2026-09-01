@@ -1,0 +1,16 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        // Compiler options.
+        "noEmit": true,
+
+        // Paths.
+        "rootDir": "./tests",
+        "outDir": "./dist",
+        "paths": {
+            "@/oliverperzyk/*": ["./tests/*"]
+        }
+    },
+    "include": ["tests/**/*.ts"],
+    "exclude": ["node_modules", "dist"]
+}
