@@ -3,6 +3,7 @@
     "description": "An easy way to interact with Discord API via Bedrock Add-ons.",
     "version": "1.0.0",
     "private": true,
+    "type": "module",
     "author": {
         "name": "oliverperzyk (Oliwier Perzyński)",
         "email": "olek@oliverperzyk.com",
