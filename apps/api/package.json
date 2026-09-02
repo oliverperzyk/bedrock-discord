@@ -1,6 +1,6 @@
 {
     "name": "@bedrock-discord/api",
-    "description": "Microservice for the Bedrock Discord API, that allows to use the library on worlds.",
+    "description": "Microservice for the Bedrock Discord library, that allows to use the library on worlds.",
     "version": "1.0.0",
     "private": true,
     "type": "module",
