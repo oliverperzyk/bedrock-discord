@@ -48,10 +48,21 @@ class EnvironmentVariableError extends Error {
     /**
      * @summary Creates an error for an invalid boolean value.
      * @param variableName - The name of the environment variable that is invalid.
-     * @returns A new EnvironmentVariableError instance.
+     * @returns Instance of an error related to the node environment.
      */
     public static fromInvalidBooleanValue(variableName: string): EnvironmentVariableError {
         return new EnvironmentVariableError(`The environment variable "${variableName}" is not a valid boolean.`, variableName)
+    }
+
+    /**
+     * @summary Creates an error for an invalid node environment value.
+     * @returns Instance of an error related to the node environment.
+     */
+    public static fromInvalidNodeEnvironmentValue(): EnvironmentVariableError {
+        return new EnvironmentVariableError(
+            `The environment variable "NODE_ENV" is not a valid node environment.`,
+            "NODE_ENV",
+        )
     }
 }
 

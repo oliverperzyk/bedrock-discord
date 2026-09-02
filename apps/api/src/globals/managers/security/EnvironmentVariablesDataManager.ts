@@ -1,4 +1,5 @@
 import { EnvironmentVariableError } from "@/oliverperzyk/models/builders/process-errors/EnvironmentVariableError"
+import { NodeEnvironment } from "@/oliverperzyk/models/globals/environment/NodeEnvironment"
 import { env } from "bun"
 
 /**
@@ -73,7 +74,7 @@ class EnvironmentVariablesDataManager {
             if (required) throw EnvironmentVariableError.fromMissingVariable(variableName)
             return undefined as T extends true ? boolean : boolean | undefined
         }
-        
+
         switch (value.toLowerCase().trim()) {
             case "true":
                 return true
@@ -81,6 +82,27 @@ class EnvironmentVariablesDataManager {
                 return false
             default:
                 throw EnvironmentVariableError.fromInvalidBooleanValue(variableName)
+        }
+    }
+
+    /**
+     * @summary Gets the node environment.
+     * @description Reads `NODE_ENV` and maps it to a {@link NodeEnvironment} value.
+     * @returns The node environment the application is running in.
+     */
+    public static getNodeEnvironment(): NodeEnvironment {
+        const value: string | undefined = env["NODE_ENV"]
+        if (!value) throw EnvironmentVariableError.fromMissingVariable("NODE_ENV")
+
+        switch (value.toLowerCase().trim()) {
+            case NodeEnvironment.DEVELOPMENT:
+                return NodeEnvironment.DEVELOPMENT
+            case NodeEnvironment.PRODUCTION:
+                return NodeEnvironment.PRODUCTION
+            case NodeEnvironment.TEST:
+                return NodeEnvironment.TEST
+            default:
+                throw EnvironmentVariableError.fromInvalidNodeEnvironmentValue()
         }
     }
 }
