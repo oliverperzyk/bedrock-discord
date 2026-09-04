@@ -33,8 +33,8 @@ export default {
             {
                 source: "/funding",
                 destination: "https://oliverperzyk.com/funding",
-                permanent: true
-            }
+                permanent: true,
+            },
         ]
     },
 } satisfies NextConfig

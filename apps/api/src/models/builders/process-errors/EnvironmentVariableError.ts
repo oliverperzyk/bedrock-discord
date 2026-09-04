@@ -1,8 +1,16 @@
+import { env } from "bun"
+
 /**
  * @summary Custom error class for environment variable errors.
  * @description This error class is used to throw errors when environment variables are missing or invalid.
  */
 class EnvironmentVariableError extends Error {
+    /**
+     * @summary The value of the environment variable that caused the error.
+     * @description Unparsed value of the environment variable that caused the error to be thrown.
+     */
+    public readonly variableValue?: string
+
     /**
      * @summary Constructor for the EnvironmentVariableError class.
      * @description Initializes the error with the given message and variable name.
@@ -15,6 +23,8 @@ class EnvironmentVariableError extends Error {
     ) {
         super(message)
         this.name = "EnvironmentVariableError"
+        this.variableName = variableName
+        this.variableValue = env[variableName]
         Object.setPrototypeOf(this, EnvironmentVariableError.prototype)
     }
 
@@ -26,14 +36,17 @@ class EnvironmentVariableError extends Error {
     public static fromMissingVariable(variableName: string): EnvironmentVariableError {
         return new EnvironmentVariableError(`The environment variable "${variableName}" is missing.`, variableName)
     }
-    
+
     /**
      * @summary Creates an error for an invalid number value.
      * @param variableName - The name of the environment variable that is invalid.
      * @returns A new EnvironmentVariableError instance.
      */
     public static fromInvalidNumberValue(variableName: string): EnvironmentVariableError {
-        return new EnvironmentVariableError(`The environment variable "${variableName}" is not a valid number.`, variableName)
+        return new EnvironmentVariableError(
+            `The environment variable "${variableName}" is not a valid number.`,
+            variableName,
+        )
     }
 
     /**
@@ -42,7 +55,10 @@ class EnvironmentVariableError extends Error {
      * @returns A new EnvironmentVariableError instance.
      */
     public static fromInvalidPortValue(variableName: string): EnvironmentVariableError {
-        return new EnvironmentVariableError(`The environment variable "${variableName}" is not a valid port.`, variableName)
+        return new EnvironmentVariableError(
+            `The environment variable "${variableName}" is not a valid port.`,
+            variableName,
+        )
     }
 
     /**
@@ -51,7 +67,10 @@ class EnvironmentVariableError extends Error {
      * @returns Instance of an error related to the node environment.
      */
     public static fromInvalidBooleanValue(variableName: string): EnvironmentVariableError {
-        return new EnvironmentVariableError(`The environment variable "${variableName}" is not a valid boolean.`, variableName)
+        return new EnvironmentVariableError(
+            `The environment variable "${variableName}" is not a valid boolean.`,
+            variableName,
+        )
     }
 
     /**

@@ -13,6 +13,7 @@ export default defineConfig([
         ignores: ["packages/**", "apps/**", "node_modules/**", "dist/**"],
     },
     {
+        ignores: ["./tsconfig.json", "./tsconfig.test.json"],
         files: ["**/*.json"],
         plugins: { json },
         language: "json/json",

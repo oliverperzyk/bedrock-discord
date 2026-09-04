@@ -13,7 +13,7 @@ import { defineConfig } from "eslint/config"
 export default defineConfig([
     tseslint.configs.recommended,
     {
-        ignores: ["node_modules/**", "dist/**", "./tsconfig*.json"],
+        ignores: ["node_modules/**", "dist/**"],
     },
     {
         files: ["**/*.ts"],
@@ -28,6 +28,7 @@ export default defineConfig([
         },
     },
     {
+        ignores: ["./tsconfig.json", "./tsconfig.test.json"],
         files: ["**/*.json"],
         plugins: { json },
         language: "json/json",

@@ -19,7 +19,10 @@ class EnvironmentVariablesDataManager {
      * @param required - Whether the environment variable is required.
      * @returns The value of the environment variable.
      */
-    public static getString<T extends boolean>(variableName: string, required: T): T extends true ? string : string | undefined {
+    public static getString<T extends boolean>(
+        variableName: string,
+        required: T,
+    ): T extends true ? string : string | undefined {
         const value: string | undefined = env[variableName]
         if (!value && required) throw EnvironmentVariableError.fromMissingVariable(variableName)
         return value as T extends true ? string : string | undefined
@@ -31,7 +34,10 @@ class EnvironmentVariablesDataManager {
      * @param required - Whether the environment variable is required.
      * @returns The value of the environment variable.
      */
-    public static getNumber<T extends boolean>(variableName: string, required: T): T extends true ? number : number | undefined {
+    public static getNumber<T extends boolean>(
+        variableName: string,
+        required: T,
+    ): T extends true ? number : number | undefined {
         const value: string | undefined = env[variableName]
         if (!value) {
             if (required) throw EnvironmentVariableError.fromMissingVariable(variableName)
@@ -49,7 +55,10 @@ class EnvironmentVariablesDataManager {
      * @param required - Whether the environment variable is required.
      * @returns The value of the environment variable.
      */
-    public static getPort<T extends boolean>(variableName: string, required: T): T extends true ? number : number | undefined {
+    public static getPort<T extends boolean>(
+        variableName: string,
+        required: T,
+    ): T extends true ? number : number | undefined {
         const value: string | undefined = env[variableName]
         if (!value) {
             if (required) throw EnvironmentVariableError.fromMissingVariable(variableName)
@@ -68,7 +77,10 @@ class EnvironmentVariablesDataManager {
      * @param required - Whether the environment variable is required.
      * @returns The value of the environment variable.
      */
-    public static getBoolean<T extends boolean>(variableName: string, required: T): T extends true ? boolean : boolean | undefined {
+    public static getBoolean<T extends boolean>(
+        variableName: string,
+        required: T,
+    ): T extends true ? boolean : boolean | undefined {
         const value: string | undefined = env[variableName]
         if (!value) {
             if (required) throw EnvironmentVariableError.fromMissingVariable(variableName)
