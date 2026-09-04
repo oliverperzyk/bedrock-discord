@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url"
  * @summary Library build script.
  * @description Bundles the library source into `dist/index.js`.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class BuildLibraryScript {
     /**
      * @summary Private constructor.
@@ -84,8 +84,8 @@ class BuildLibraryScript {
     private static markCommentsAsLegal(source: string): string {
         return source
             .replaceAll("/**", "/*!*")
-            .replace(/\/\*(?!\!)/g, "/*!")
-            .replace(/(^|[^:])\/\/(?![\/!])/gm, "$1//!")
+            .replace(/\/\*(?!!)/g, "/*!")
+            .replace(/(^|[^:])\/\/(?![/!])/gm, "$1//!")
     }
 
     /**
