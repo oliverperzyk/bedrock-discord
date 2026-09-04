@@ -26,6 +26,15 @@
         "build": "next build",
         "start": "next start"
     },
+    "lint-staged": {
+        "**/*.{ts,tsx,json,jsonc,json5,css,md}": [
+            "bunx prettier --write",
+            "bunx eslint --fix"
+        ],
+        "**/*.{yml,yaml}": [
+            "bunx prettier --write"
+        ]
+    },
     "dependencies": {
         "next": "16.2.6",
         "react": "19.2.4",
@@ -37,6 +46,7 @@
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "babel-plugin-react-compiler": "1.0.0",
+        "lint-staged": "^17.4.1",
         "prettier": "^3.9.6",
         "tailwindcss": "^4",
         "typescript": "^5"

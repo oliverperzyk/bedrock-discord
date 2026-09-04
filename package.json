@@ -25,13 +25,24 @@
         "format": "bunx prettier --write .",
         "format:check": "bunx prettier --check .",
         "lint": "bunx eslint .",
-        "lint:fix": "bunx eslint --fix ."
+        "lint:fix": "bunx eslint --fix .",
+        "prepare": "bunx husky"
+    },
+    "lint-staged": {
+        "**/*.{ts,json,jsonc,json5,md}": [
+            "bunx prettier --write",
+            "bunx eslint --fix"
+        ],
+        "**/*.{yml,yaml}": [
+            "bunx prettier --write"
+        ]
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
         "@eslint/json": "^2.1.0",
         "@eslint/markdown": "^8.0.3",
         "eslint": "^10.9.1",
+        "husky": "^9.1.7",
         "prettier": "^3.9.6",
         "typescript": "^7.0.2"
     }

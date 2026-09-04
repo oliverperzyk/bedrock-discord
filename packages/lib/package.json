@@ -32,6 +32,15 @@
         "lint:fix": "bunx eslint --fix .",
         "build": "bun ./scripts/BuildLibraryScript.ts"
     },
+    "lint-staged": {
+        "**/*.{ts,json,jsonc,json5,md}": [
+            "bunx prettier --write",
+            "bunx eslint --fix"
+        ],
+        "**/*.{yml,yaml}": [
+            "bunx prettier --write"
+        ]
+    },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
         "@eslint/json": "^2.1.0",
@@ -41,6 +50,7 @@
         "eslint": "^10.9.1",
         "globals": "^17.12.0",
         "jiti": "^2.7.0",
+        "lint-staged": "^17.4.1",
         "prettier": "^3.9.6",
         "typescript": "^6.0.0",
         "typescript-eslint": "^8.69.0"

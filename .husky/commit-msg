@@ -1,0 +1,44 @@
+#!/bin/bash
+# This file is being executed before committing via git, to verify
+# the commit message against Conventional Commits:
+# https://www.conventionalcommits.org/en/v1.0.0/
+
+commit_msg_file="$1"
+
+subject=""
+while IFS= read -r line || [[ -n "$line" ]]; do
+	[[ "$line" =~ ^# ]] && continue
+	[[ -z "${line//[[:space:]]/}" ]] && continue
+	subject="$line"
+	break
+done <"$commit_msg_file"
+
+if [[ -z "$subject" ]]; then
+	echo "commit-msg: commit message is empty" >&2
+	exit 1
+fi
+
+if [[ "$subject" =~ ^Merge[[:space:]] ]]; then
+	exit 0
+fi
+
+conventional_commit_pattern='^[a-zA-Z][a-zA-Z0-9_-]*(\([^)]+\))?!?: .+'
+
+if [[ ! "$subject" =~ $conventional_commit_pattern ]]; then
+	echo "commit-msg: invalid commit message" >&2
+	echo "" >&2
+	echo "Commit messages must follow Conventional Commits:" >&2
+	echo "  https://www.conventionalcommits.org/en/v1.0.0/" >&2
+	echo "" >&2
+	echo "Expected format:" >&2
+	echo "  <type>[optional scope][optional !]: <description>" >&2
+	echo "" >&2
+	echo "Examples:" >&2
+	echo "  feat: add user authentication" >&2
+	echo "  fix(api): handle null response" >&2
+	echo "  feat!: drop support for Node 18" >&2
+	echo "" >&2
+	echo "Got:" >&2
+	echo "  $subject" >&2
+	exit 1
+fi
