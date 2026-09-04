@@ -1,0 +1,52 @@
+# Workflow to verify the documentation of the project.
+---
+name: Verify documentation.
+on:
+    push:
+        paths:
+            - "apps/docs/**"
+            - ".github/workflows/VerifyDocumentationWorkflow.yaml"
+    pull_request:
+        paths:
+            - "apps/docs/**"
+            - ".github/workflows/VerifyDocumentationWorkflow.yaml"
+permissions:
+    contents: read
+defaults:
+    run:
+        working-directory: apps/docs
+        shell: bash
+jobs:
+    verify-documentation:
+        name: Verify documentation.
+        runs-on: ubuntu-latest
+        env:
+            NODE_ENV: test
+            # Website's environment variables.
+            NEXT_PUBLIC_WEBSITE_ENDPOINT_URL: https://bedrock-discord.oliverperzyk.com
+        steps:
+            - name: Checkout repository.
+              uses: actions/checkout@v7
+            - name: Setup Bun.
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install dependencies.
+              run: bun install --frozen-lockfile
+            - name: Initialize testing environment.
+              run: bun run test:init
+            - name: Check formatting of all files using Prettier.
+              run: bun run format:check
+            - name: Check linting of all files using ESLint.
+              run: bun run lint
+            - name: Check linting of Dockerfile using Hadolint.
+              uses: hadolint/hadolint-action@v3.3.0
+              with:
+                  dockerfile: apps/docs/Dockerfile
+                  config: apps/shared/.hadolint.yaml
+            - name: Run tests.
+              run: bun run test
+            - name: Build production-ready website.
+              run: bun run build
+              env:
+                  NODE_ENV: production
