@@ -13,14 +13,14 @@ import { defineConfig } from "eslint/config"
 export default defineConfig([
     tseslint.configs.recommended,
     {
-        ignores: ["node_modules/**", "dist/**"],
+        ignores: ["node_modules/**", "dist/**", "./tsconfig*.json"],
     },
     {
         files: ["**/*.ts"],
         plugins: { js },
         extends: ["js/recommended"],
-        languageOptions: { 
-            globals: globals.node 
+        languageOptions: {
+            globals: globals.node,
         },
     },
     {

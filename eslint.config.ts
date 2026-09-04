@@ -10,7 +10,7 @@ import { defineConfig } from "eslint/config"
 export default defineConfig([
     {
         // Apps & packages directories are ignored as they do have their own ESLint configuration.
-        ignores: ["packages/**"],
+        ignores: ["packages/**", "apps/**", "node_modules/**", "dist/**"],
     },
     {
         files: ["**/*.json"],
