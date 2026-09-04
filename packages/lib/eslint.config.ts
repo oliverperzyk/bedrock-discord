@@ -26,6 +26,11 @@ export default defineConfig([
                 ...globals.node,
             },
         },
+        rules: {
+            // This rule is disabled as it wrongly flags TypeScript-only features
+            // (e.g. enumerations, union types, etc.) as unused.
+            "no-unused-vars": "off",
+        },
     },
     {
         ignores: ["./tsconfig.json", "./tsconfig.test.json"],

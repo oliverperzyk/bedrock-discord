@@ -2,7 +2,7 @@
  * @summary Test environment for the library.
  * @description A class that initializes the test environment for the library.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class TestEnvironment {
     /**
      * @summary Private constructor.
