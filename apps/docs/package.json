@@ -22,9 +22,15 @@
         "bun": ">=1.3.0"
     },
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start"
+        "format": "bunx prettier --write .",
+        "format:check": "bunx prettier --check .",
+        "lint": "bunx eslint .",
+        "lint:fix": "bunx eslint --fix .",
+        "test": "bun test",
+        "test:init": "bun ./tests/TestEnvironment.ts",
+        "build": "bunx next build",
+        "start": "bunx next start",
+        "dev": "bunx next dev --turbopack"
     },
     "lint-staged": {
         "**/*.{ts,tsx,json,jsonc,json5,css,md}": [
