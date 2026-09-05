@@ -4,6 +4,10 @@
   "workspaces": {
     "": {
       "name": "bedrock-discord",
+      "dependencies": {
+        "@minecraft/server": "^2.9.0",
+        "@minecraft/server-net": "^1.0.0-beta.11940b24",
+      },
       "devDependencies": {
         "@eslint/js": "^10.0.1",
         "@eslint/json": "^2.1.0",
@@ -52,6 +56,16 @@
     "@humanwhocodes/momoa": ["@humanwhocodes/momoa@3.3.12", "", {}, "sha512-xS9xl4ieqTqhSZfKV3YXj/htwJCUxbgvkTVaK1fkESgrOzvoVSOTRQeQ8tTLOZUS0Csi2xqtJQXgVTRH5OEbHQ=="],
 
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.3", "", {}, "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ=="],
+
+    "@minecraft/common": ["@minecraft/common@1.3.0", "", {}, "sha512-GLT8USFhvEyeTTFHZAgszbrnoT007hmXmK+aO4l+2A1up9/zwZ+4e8R8F0KcKrCWDjLEqkOJtPow0hQCcNJ++Q=="],
+
+    "@minecraft/server": ["@minecraft/server@2.9.0", "", { "peerDependencies": { "@minecraft/common": "^1.2.0", "@minecraft/vanilla-data": ">=1.20.70" } }, "sha512-tzPwJbcXs4H3daAy5v0KldOMUwgSr4cc5x6TpEvsr3Jto9XtvsBcNUVLVdni5NEZCizQ0mzBwnLCXgxyYpR91A=="],
+
+    "@minecraft/server-admin": ["@minecraft/server-admin@1.0.0-beta.11940b24", "", {}, "sha512-UZ8YyB8mvF31f22+uM67gJums9d6NDgz9AQ2l4a++EHUP9uen0m3aaBaqM9RyumJpRBJbv/hslAKOyeDT01qew=="],
+
+    "@minecraft/server-net": ["@minecraft/server-net@1.0.0-beta.11940b24", "", { "dependencies": { "@minecraft/server-admin": "1.0.0-beta.11940b24" } }, "sha512-jiL03mGNpADCfvPDyydheEAhdi7J++nx5nB7Gyu3GImDlV5pv9uTwKCrnmILrLs4qJTtxhuRLKBKRlVyYDpKMw=="],
+
+    "@minecraft/vanilla-data": ["@minecraft/vanilla-data@1.26.44", "", {}, "sha512-77Q/ZYrNUDqb1y9velRhal3H2jWVrHS0LnACn48gb6D7dhp9PVGqLGYPztAxkEcaopOkoKDt72j2vvjZqm7/Yg=="],
 
     "@types/bun": ["@types/bun@1.4.0", "", { "dependencies": { "bun-types": "1.4.0" } }, "sha512-K+lZULY23vRgK/CfTjFIV+tyifaNdSMlPh9j+6mQ/cLfpOznLyAuzgV/JQysyECpkBQLVMSyvjlr2fBUSA9wFQ=="],
 
