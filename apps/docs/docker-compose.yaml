@@ -1,0 +1,24 @@
+# Configuration of the Docker Compose file for documentation app.
+---
+services:
+    frontend:
+        container_name: oliverperzyk-bedrock-discord-docs
+        restart: unless-stopped
+        init: true
+        build:
+            dockerfile: Dockerfile
+            context: .
+            args:
+                APP_PORT: "${APP_PORT:-3000}"
+        environment:
+            NODE_ENV: "${NODE_ENV:-production}"
+        env_file:
+            - .env
+        healthcheck:
+            test: ["CMD", "bun", "run", "healthcheck"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+        ports:
+            - "${APP_PORT:-3000}:${APP_PORT:-3000}"
