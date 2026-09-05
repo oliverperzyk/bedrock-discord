@@ -1,0 +1,78 @@
+{
+    "name": "@bedrock-discord/docs",
+    "description": "Documentation website for the Bedrock Discord library, that describes all the features and how to use them.",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "author": {
+        "name": "oliverperzyk (Oliwier Perzyński)",
+        "email": "olek@oliverperzyk.com",
+        "url": "https://oliverperzyk.com"
+    },
+    "homepage": "https://bedrock-discord.oliverperzyk.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/oliverperzyk/bedrock-discord.git"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/oliverperzyk/bedrock-discord/issues"
+    },
+    "engines": {
+        "bun": ">=1.3.0"
+    },
+    "scripts": {
+        "format": "bunx prettier --write .",
+        "format:check": "bunx prettier --check .",
+        "lint": "bunx eslint .",
+        "lint:fix": "bunx eslint --fix .",
+        "test": "bun test",
+        "test:init": "bun ./tests/TestEnvironment.ts",
+        "healthcheck": "bun ./scripts/docker/HealthCheckDockerScript.ts",
+        "build": "bunx next build",
+        "start": "bunx next start",
+        "dev": "bunx next dev --turbopack"
+    },
+    "lint-staged": {
+        "**/*.{ts,tsx,json,jsonc,json5,css,md}": [
+            "bunx prettier --write",
+            "bunx eslint --fix"
+        ],
+        "**/*.{yml,yaml}": [
+            "bunx prettier --write"
+        ]
+    },
+    "dependencies": {
+        "next": "16.2.6",
+        "react": "19.2.4",
+        "react-dom": "19.2.4"
+    },
+    "devDependencies": {
+        "@eslint/css": "^2.0.0",
+        "@eslint/js": "^10.0.1",
+        "@eslint/json": "^2.1.0",
+        "@eslint/markdown": "^8.0.3",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "babel-plugin-react-compiler": "1.0.0",
+        "eslint": "^10.9.1",
+        "eslint-plugin-react": "^7.37.5",
+        "globals": "^17.12.0",
+        "jiti": "^2.7.0",
+        "lint-staged": "^17.4.1",
+        "prettier": "^3.9.6",
+        "tailwindcss": "^4",
+        "typescript": "^5",
+        "typescript-eslint": "^8.69.0"
+    },
+    "ignoreScripts": [
+        "sharp",
+        "unrs-resolver"
+    ],
+    "trustedDependencies": [
+        "sharp",
+        "unrs-resolver"
+    ]
+}

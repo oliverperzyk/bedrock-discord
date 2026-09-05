@@ -1,0 +1,60 @@
+# Template for reporting bugs.
+---
+name: Bug Report
+description: Report unexpected or incorrect behavior in Bedrock Discord library.
+title: "fix: "
+labels: ["bug"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              ## Instructions
+              - Make sure that you are using a supported version of Bedrock Discord.
+              - Search existing bug reports to see if the problem has already been reported. If it has, add any useful details to the existing issue instead of opening a duplicate.
+    - type: dropdown
+      id: section
+      attributes:
+          label: Section
+          description: Which part of the project is affected by this bug?
+          options:
+              - API microservice for Worlds
+              - Documentation website
+              - Library
+              - Other
+      validations:
+          required: true
+    - type: textarea
+      id: description
+      attributes:
+          label: Bug description
+          description: Clearly describe the problem and include any relevant context.
+          placeholder: Describe what went wrong and when the problem occurs.
+      validations:
+          required: true
+    - type: textarea
+      id: reproduction-steps
+      attributes:
+          label: Reproduction steps
+          description: Provide the steps needed to reproduce the bug.
+          placeholder: |
+              1. Go to ...
+              2. Perform ...
+              3. Observe ...
+      validations:
+          required: true
+    - type: textarea
+      id: expected-behavior
+      attributes:
+          label: Expected behavior
+          description: Describe what you expected to happen.
+          placeholder: Explain the result you expected.
+      validations:
+          required: true
+    - type: textarea
+      id: actual-behavior
+      attributes:
+          label: Actual behavior
+          description: Describe what happened instead.
+          placeholder: Explain the result you observed, including errors or screenshots where helpful.
+      validations:
+          required: true

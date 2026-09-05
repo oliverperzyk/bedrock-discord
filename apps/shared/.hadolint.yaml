@@ -1,0 +1,16 @@
+# Configuration of the Hadolint linter for the Dockerfiles.
+# Used by CI workflows to lint apps later.
+---
+strict-labels: true
+label-schema:
+    org.opencontainers.image.title: text
+    org.opencontainers.image.description: text
+    org.opencontainers.image.version: semver
+    org.opencontainers.image.authors: text
+    org.opencontainers.image.licenses: spdx
+    org.opencontainers.image.url: url
+    org.opencontainers.image.documentation: url
+    org.opencontainers.image.source: url
+override:
+    # Bun images do not have to be pinned.
+    info: [DL3008]

@@ -1,0 +1,33 @@
+# Template for requesting new features.
+---
+name: Feature Request
+description: Suggest an improvement or new feature for the Bedrock Discord library.
+title: "feat: "
+labels: ["enhancement"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              ## Instructions
+              - Make sure that the feature you are requesting is not already implemented.
+              - Check on other feature requests to see if your request is already being considered, requested. If it's, then promote the primary issue.
+    - type: dropdown
+      id: section
+      attributes:
+          label: Section
+          description: Which part of the project would this feature affect?
+          options:
+              - Documentation website
+              - API microservice for Worlds
+              - Library
+              - Other
+      validations:
+          required: true
+    - type: textarea
+      id: description
+      attributes:
+          label: Feature description
+          description: Explain the feature, the problem it would solve, and why it would be useful.
+          placeholder: Describe your proposed feature and include examples or use cases where helpful.
+      validations:
+          required: true

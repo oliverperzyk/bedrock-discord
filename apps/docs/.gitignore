@@ -1,0 +1,10 @@
+# Testing coverage.
+/coverage/
+
+# Next.js's build output.
+/.next/
+/out/
+/build/
+
+# TypeScript declarations.
+/next-env.d.ts

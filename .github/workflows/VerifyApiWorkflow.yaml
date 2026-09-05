@@ -1,0 +1,50 @@
+# Workflow to verify the API of the project.
+---
+name: Verify API.
+on:
+    push:
+        paths:
+            - "apps/api/**"
+            - ".github/workflows/VerifyApiWorkflow.yaml"
+    pull_request:
+        paths:
+            - "apps/api/**"
+            - ".github/workflows/VerifyApiWorkflow.yaml"
+permissions:
+    contents: read
+defaults:
+    run:
+        working-directory: apps/api
+        shell: bash
+jobs:
+    verify-api:
+        name: Verify API.
+        runs-on: ubuntu-latest
+        env:
+            NODE_ENV: test
+        steps:
+            - name: Checkout repository.
+              uses: actions/checkout@v7
+            - name: Setup Bun.
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install dependencies.
+              run: bun install --frozen-lockfile
+            - name: Initialize testing environment.
+              run: bun run test:init
+            - name: Check formatting of all files using Prettier.
+              run: bun run format:check
+            - name: Check linting of all files using ESLint.
+              run: bun run lint
+            - name: Check linting of Dockerfile using Hadolint.
+              uses: hadolint/hadolint-action@v3.3.0
+              with:
+                  dockerfile: apps/api/Dockerfile
+                  config: apps/shared/.hadolint.yaml
+            - name: Run tests.
+              run: bun run test
+            - name: Build production-ready API.
+              run: bun run build
+              env:
+                  NODE_ENV: production

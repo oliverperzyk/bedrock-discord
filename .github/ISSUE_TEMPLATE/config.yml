@@ -1,0 +1,10 @@
+# Configuration for GitHub issues.
+---
+blank_issues_enabled: false
+contact_links:
+    - name: Join my Discord server.
+      about: Join my Discord server to discuss the Bedrock Discord library and get help.
+      url: https://community.oliverperzyk.com
+    - name: Contact me via mail.
+      about: If you feel that the issue is too sensitive to be discussed in public, you can contact me via mail.
+      url: https://oliverperzyk.com/contact

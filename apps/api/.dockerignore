@@ -17,7 +17,14 @@
 
 # Environment variables files.
 /**/*.env*
-!/**/.env.example
+
+# Files related to development environment.
+/.prettierrc.json
+/.prettierignore
+/tests/
+/bunfig.toml
+/eslint.config.ts
+/tsconfig.test.json
 
 # Operating system files.
 /**/*.DS_Store*

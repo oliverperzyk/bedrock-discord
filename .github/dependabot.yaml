@@ -1,15 +1,45 @@
+# Configuration for Dependabot to automatically update dependencies in the project.
+---
 version: 2
 updates:
-    - package-ecosystem: "bun"
-      directory: "/"
+    # Update Bun dependencies in the root directory and all packages.
+    - package-ecosystem: bun
+      target-branch: development
+      directories:
+          - /
+          - /packages/api/
+          - /packages/docs/
+          - /packages/lib
       schedule:
-          interval: "weekly"
+          interval: monthly
+          timezone: Europe/Warsaw
+      open-pull-requests-limit: 40
+      labels:
+          - "🔄 dependencies"
       commit-message:
-          prefix: "chore(deps->codebase):"
-
-    - package-ecosystem: "github-actions"
-      directory: "/"
+          prefix: "chore(bun):"
+    # Update GitHub Actions workflows in the root directory and all packages.
+    - package-ecosystem: github-actions
+      target-branch: development
+      directory: /
       schedule:
-          interval: "weekly"
+          interval: monthly
+          timezone: Europe/Warsaw
+      open-pull-requests-limit: 10
+      labels:
+          - "🔄 dependencies"
       commit-message:
-          prefix: "chore(deps->actions):"
+          prefix: "chore(workflows):"
+    # Update Docker image in the documentation application.
+    - package-ecosystem: docker
+      directories:
+          - /packages/api/
+          - /packages/docs/
+      schedule:
+          interval: monthly
+          timezone: Europe/Warsaw
+      open-pull-requests-limit: 10
+      labels:
+          - "deps"
+      commit-message:
+          prefix: "chore(docker):"

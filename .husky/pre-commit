@@ -1,1 +1,22 @@
+#!/bin/bash
+# This file is being executed before committing via git.
+
 bunx lint-staged
+(
+    cd apps
+    (
+        cd api
+        bunx lint-staged
+    )
+    (
+        cd docs
+        bunx lint-staged
+    )
+)
+(
+    cd packages
+    (
+        cd lib
+        bunx lint-staged
+    )
+)
