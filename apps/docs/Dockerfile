@@ -8,8 +8,8 @@ RUN bun run build
 
 FROM oven/bun:canary-slim AS runner
 
-LABEL org.opencontainers.image.title="@oliverperzyk/bedrock-discord/docs" \
-    org.opencontainers.image.description="A documentation website for the Bedrock Discord." \
+LABEL org.opencontainers.image.title="@/bedrock-discord/docs" \
+    org.opencontainers.image.description="A documentation website for the Bedrock Discord library." \
     org.opencontainers.image.version="0.0.1" \
     org.opencontainers.image.authors="Oliwier Perzyński <olek@oliverperzyk.com>" \
     org.opencontainers.image.licenses="AGPL-3.0-only" \
