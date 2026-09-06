@@ -1,8 +1,78 @@
 @import "tailwindcss";
 
+@layer theme {
+    @theme inline {
+        --font-mojangles: var(--font-mojangles-face), sans-serif;
+        --font-minecraft-five: var(--font-minecraft-five-face), sans-serif;
+        --font-minecraft-ten: var(--font-minecraft-ten-face), sans-serif;
+    }
+
+    :root {
+        --color-background: #fafafa;
+        --color-background-accent: #f0f0f0;
+        --color-background-border: #f2f2f2;
+        --color-foreground: #171717;
+        --color-font-secondary: #808080;
+    }
+
+    html.dark {
+        --color-background: #0a0a0a;
+        --color-background-accent: #101010;
+        --color-background-border: #0d0d0d;
+        --color-foreground: #fafafa;
+        --color-font-secondary: #808080;
+    }
+
+    /**
+     * In general, it's better to use the `oklch` color model for dark mode.
+     * But just in case, we'll also support the `rgb` (under hex format) color model.
+     */
+    @supports (color: oklch(0% 0 0)) {
+        :root {
+            --color-background: oklch(0.98 0 0);
+            --color-background-accent: oklch(0.955 0 0);
+            --color-foreground: oklch(0.205 0 0);
+        }
+
+        html.dark {
+            --color-background: oklch(0.145 0 0);
+            --color-background-accent: oklch(0.173 0 0);
+            --color-foreground: oklch(0.985 0 0);
+        }
+    }
+}
+
 @layer base {
     * {
-        margin: 0;
+        box-sizing: border-box;
         padding: 0;
+        margin: 0;
+        font-family: "Mojangles", sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-foreground);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        cursor: pointer;
     }
 }

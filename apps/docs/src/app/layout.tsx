@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import type { IChildren } from "../lib/models/app/general/interfaces/IChildren"
 import type { JSX } from "react/jsx-runtime"
+import { MINECRAFT_FIVE, MINECRAFT_TEN, MOJANGLES } from "./LocalFonts"
 import "@/oliverperzyk/styles/GlobalStyles.css"
 
 /**
@@ -20,7 +21,11 @@ const metadata: Metadata = {
  */
 function RootLayout({ children }: Readonly<IChildren>): JSX.Element {
     return (
-        <html lang="en-US" className="h-full antialiased" suppressHydrationWarning>
+        <html
+            lang="en-US"
+            className={`${MINECRAFT_FIVE.variable} ${MINECRAFT_TEN.variable} ${MOJANGLES.variable} h-full antialiased`}
+            suppressHydrationWarning
+        >
             <body className="min-h-full flex flex-col">{children}</body>
         </html>
     )
