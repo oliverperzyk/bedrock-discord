@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express"
+import type { NextFunction, Request, Response } from "express"
 import { BaseMiddleware } from "../base/BaseMiddleware"
 import { NotAcceptableResponseBuilder } from "@/oliverperzyk/models/builders/responses/errors/NotAcceptableResponseBuilder"
 
@@ -23,7 +23,7 @@ class AcceptHeaderMiddleware extends BaseMiddleware {
      * @param next - The next function that moves the request to the next middleware.
      */
     public handle(request: Request, response: Response, next: NextFunction): void {
-        const acceptHeader: string | undefined = request.headers["accept"]
+        const acceptHeader: string | undefined = request.headers["accept"]?.toLowerCase().trim()
         if (!acceptHeader) return next()
 
         const [type] = acceptHeader.split(";")
