@@ -53,6 +53,7 @@
         "@eslint/json": "^2.1.0",
         "@eslint/markdown": "^8.0.3",
         "@tailwindcss/postcss": "^4",
+        "@types/bun": "^1.4.1",
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
