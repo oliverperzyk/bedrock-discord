@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from "express"
 import { BaseMiddleware } from "../base/BaseMiddleware"
+import { ForbiddenResponseBuilder } from "@/oliverperzyk/models/builders/responses/errors/ForbiddenResponseBuilder"
 
 /**
  * @summary Middleware to check the User-Agent header.
@@ -24,7 +25,7 @@ class UserAgentHeaderMiddleware extends BaseMiddleware {
     public handle(request: Request, response: Response, next: NextFunction): void {
         const userAgent: string | undefined = request.headers["user-agent"]
         if (userAgent !== "Bedrock-Discord") {
-            response.sendStatus(403)
+            response.status(403).json(ForbiddenResponseBuilder.forbiddenInvalidUserAgentHeader)
         }
 
         next()

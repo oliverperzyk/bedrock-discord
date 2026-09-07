@@ -29,7 +29,7 @@ class ForbiddenResponseBuilder extends BaseResponseBuilder {
      * @description Returns a response object with the message "INVALID_USER_AGENT_HEADER" that is sent when the User-Agent header is not "Bedrock-Discord".
      * @returns The built response object.
      */
-    public static forbiddenInvalidUserAgentHeader(): IBaseResponse<undefined> {
+    public static get forbiddenInvalidUserAgentHeader(): IBaseResponse<undefined> {
         return BaseResponseBuilder.build("INVALID_USER_AGENT_HEADER", undefined)
     }
 }
