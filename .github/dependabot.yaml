@@ -7,8 +7,8 @@ updates:
       target-branch: development
       directories:
           - /
-          - /packages/api/
-          - /packages/docs/
+          - /apps/api/
+          - /apps/docs/
           - /packages/lib
       schedule:
           interval: monthly
@@ -33,8 +33,8 @@ updates:
     # Update Docker image in the documentation application.
     - package-ecosystem: docker
       directories:
-          - /packages/api/
-          - /packages/docs/
+          - /apps/api/
+          - /apps/docs/
       schedule:
           interval: monthly
           timezone: Europe/Warsaw
