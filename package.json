@@ -43,6 +43,7 @@
         "@eslint/markdown": "^8.0.3",
         "eslint": "^10.9.1",
         "husky": "^9.1.7",
+        "jiti": "^2.7.0",
         "prettier": "^3.9.6",
         "typescript": "^7.0.2"
     }
