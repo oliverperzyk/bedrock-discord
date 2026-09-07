@@ -24,7 +24,6 @@ LABELS=(
     "enhancement" "5555ff" "New feature or request to the codebase or the application itself."
     "documentation" "55ff55" "Improvements or additions to documentation."
     "question" "ddcc55" "Further information is requested."
-    "translation" "ff55ff" "Issue related to translations."
 )
 
 if (( ${#LABELS[@]} % 3 != 0 )); then

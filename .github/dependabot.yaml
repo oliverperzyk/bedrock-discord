@@ -15,7 +15,7 @@ updates:
           timezone: Europe/Warsaw
       open-pull-requests-limit: 40
       labels:
-          - "🔄 dependencies"
+          - "deps"
       commit-message:
           prefix: "chore(bun):"
     # Update GitHub Actions workflows in the root directory and all packages.
@@ -27,7 +27,7 @@ updates:
           timezone: Europe/Warsaw
       open-pull-requests-limit: 10
       labels:
-          - "🔄 dependencies"
+          - "deps"
       commit-message:
           prefix: "chore(workflows):"
     # Update Docker image in the documentation application.
