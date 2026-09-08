@@ -11,3 +11,8 @@
  * so the library can send HTTP on BDS (server-net) or via the debugger bridge on worlds.
  */
 export { HttpClient } from "./internal/clients/HttpClient"
+
+/**
+ * @summary SDK related with webhooks.
+ */
+export * from "./sdk/webhooks/Webhook"
