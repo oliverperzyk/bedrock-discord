@@ -1,13 +1,14 @@
 import type { IPartialChannel } from "../../../channels/base/interfaces/IPartialChannel"
 import type { Snowflake } from "../../../data/snowflakes/types/Snowflake"
 import type { IPartialGuild } from "../../../guilds/base/interfaces/IPartialGuild"
+import type { IPartialUser } from "../../../users/base/interfaces/IPartialUser"
 import type { WebhookType } from "../enums/WebhookType"
 
 /**
  * @summary A webhook object.
  * @description A webhook object is a webhook that is used to send messages to a channel.
  */
-type IWebhook = {
+type IWebhook<Detailed extends boolean = false> = {
     /**
      * @summary Identifier of a webhook.
      * @description Unique identifier for the webhook.
@@ -17,7 +18,7 @@ type IWebhook = {
      * @summary Type of the webhook.
      * @description Type of a webhook, that might be originated with additional fields.
      */
-    readonly type: WebhookType.APPLICATION
+    readonly type: WebhookType
     /**
      * @summary Identifier of the guild.
      * @description Snowflake of the guild the webhook is associated with.
@@ -38,6 +39,7 @@ type IWebhook = {
      * @description CDN hash of the webhook's default avatar.
      */
     readonly avatar?: string
+    readonly user?: Detailed extends true ? IPartialUser : never
 } & (
     | {
           /**
