@@ -19,6 +19,12 @@ class HttpClient {
     private constructor() {}
 
     /**
+     * @summary The base URL of the Discord API.
+     * @description Base endpoint of the Discord API, uses latest REST version.
+     */
+    public static readonly DISCORD_API_BASE_URL: string = "https://discord.com/api/v10"
+
+    /**
      * @summary Performs an HTTP request.
      * @description Routes through server-net or {@link DebuggerHttpTransport} based on {@link CommunicationMode.getIsServerNetEnabled}.
      * @template D - The type of the data in a successful response.
@@ -40,6 +46,25 @@ class HttpClient {
     }
 
     /**
+     * @summary Resolves a URL to a Discord API URL.
+     * @description Resolves a URL to a Discord API URL by prefixing it with the Discord API base URL if it is a relative path.
+     * @param url - The URL to resolve.
+     * @returns The resolved URL.
+     */
+    private static resolveUrl(url: string | URL): string {
+        if (typeof url === "string" && url.startsWith("/")) {
+            return `${HttpClient.DISCORD_API_BASE_URL}${url}`
+        }
+
+        try {
+            const parsedUrl: URL = url instanceof URL ? url : new URL(url)
+            return new URL(parsedUrl.pathname, HttpClient.DISCORD_API_BASE_URL).toString()
+        } catch {
+            throw new URIError("Invalid URL while resolving URL to Discord API.")
+        }
+    }
+
+    /**
      * @summary Performs a request with `@minecraft/server-net`.
      * @description Builds an `HttpRequest`, executes it through the cached server-net client, and maps the result.
      */
@@ -50,7 +75,7 @@ class HttpClient {
     ): Promise<IRequestResponse<D, E>> {
         const serverNet: typeof import("@minecraft/server-net") = await import("@minecraft/server-net")
         const http: NonNullable<ReturnType<typeof CommunicationMode.http>> = CommunicationMode.http<true>()
-        const request: HttpRequest = new serverNet.HttpRequest(url)
+        const request: HttpRequest = new serverNet.HttpRequest(HttpClient.resolveUrl(url))
             .setMethod(this.toServerNetMethod(method, serverNet.HttpRequestMethod))
             .setHeaders(data.headers !== undefined ? [...data.headers] : [])
 
@@ -103,7 +128,7 @@ class HttpClient {
     ): Promise<IRequestResponse<D, E>> {
         try {
             const response: IDebuggerServerResponse = await DebuggerHttpTransport.sendHttpRequest(
-                url,
+                HttpClient.resolveUrl(url),
                 {
                     method,
                     headers: this.toFetchHeaders(data.headers),
