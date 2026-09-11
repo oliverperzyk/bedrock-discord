@@ -18,39 +18,10 @@ abstract class BaseButton extends BaseComponent {
     protected static override readonly componentType: ComponentType = ComponentType.BUTTON
 
     /**
-     * @summary Optional component identifier.
-     * @description 32-bit integer used to identify this button in an interaction response. Discord generates one if omitted.
-     */
-    private id: number | undefined
-
-    /**
      * @summary Disabled state.
      * @description Whether the button is non-interactive. Discord defaults this to `false` when omitted.
      */
-    private disabled: boolean | undefined
-
-    /**
-     * @summary Gets the component identifier.
-     * @description Returns the optional 32-bit component `id`, or `undefined` when Discord should generate one.
-     * @returns The component identifier, or `undefined` if unset.
-     */
-    public getId(): number | undefined {
-        return this.id
-    }
-
-    /**
-     * @summary Sets the component identifier.
-     * @description Assigns a 32-bit component `id`. Sending `0` is treated by Discord as empty and replaced.
-     * @param id - The component identifier.
-     * @returns This button for chaining.
-     */
-    public setId(id: number): this {
-        if (!Number.isInteger(id) || id < 0 || id > 0xffffffff) {
-            throw new RangeError("Button component id must be a 32-bit unsigned integer.")
-        }
-        this.id = id
-        return this
-    }
+    private disabled?: boolean
 
     /**
      * @summary Gets whether the button is disabled.

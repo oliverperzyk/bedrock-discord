@@ -25,3 +25,4 @@ export type { InteractiveButtonStyle } from "./models/sdk/components/buttons/typ
 export { InteractiveButton } from "./sdk/components/buttons/components/InteractiveButton"
 export { LinkButton } from "./sdk/components/buttons/components/LinkButton"
 export { PremiumButton } from "./sdk/components/buttons/components/PremiumButton"
+export { ActionRow } from "./sdk/components/groups/ActionRow"
