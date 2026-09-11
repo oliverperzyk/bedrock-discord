@@ -17,8 +17,8 @@ export * from "./dropdowns/components/UserDropdown"
 /**
  * @summary SDK related for display components.
  */
+export * from "./display/File"
 export * from "./display/MediaGalleryItem"
-export * from "./display/SectionAccessory"
 export * from "./display/TextDisplay"
 
 /**
