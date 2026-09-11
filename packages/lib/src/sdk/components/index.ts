@@ -15,7 +15,13 @@ export * from "./dropdowns/components/StringDropdown"
 export * from "./dropdowns/components/UserDropdown"
 
 /**
- * @summary SDK related for group components.
+ * @summary SDK related for display components.
+ */
+export * from "./display/MediaGalleryItem"
+
+/**
+ * @summary SDK related for layout components.
  */
 export * from "./layout/ActionRow"
 export * from "./layout/Container"
+export * from "./layout/MediaGallery"
