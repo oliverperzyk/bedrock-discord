@@ -3,7 +3,7 @@
 # It deploys both applications - API and documentation website to production.
 set -euo pipefail
 
-cd ~/bedrock-discord
+cd "${VPS_DEPLOY_PATH:?VPS_DEPLOY_PATH is required}"
 
 docker compose pull
 docker compose up -d
