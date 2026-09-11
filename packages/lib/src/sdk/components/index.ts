@@ -18,6 +18,7 @@ export * from "./dropdowns/components/UserDropdown"
  * @summary SDK related for display components.
  */
 export * from "./display/MediaGalleryItem"
+export * from "./display/TextDisplay"
 
 /**
  * @summary SDK related for layout components.
