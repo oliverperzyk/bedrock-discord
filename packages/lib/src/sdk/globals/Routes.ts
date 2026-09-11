@@ -12,6 +12,22 @@ class Routes {
     private constructor() {}
 
     /**
+     * @summary Resolves the URL for the Discord API.
+     * @description Resolves the URL for the Discord API by concatenating the base URL with the path and query parameters.
+     * @param path - The path of the URL.
+     * @param query - The query parameters of the URL.
+     * @returns The resolved URL.
+     */
+    public static resolveUrl(path: string, query: Record<string, string | number | boolean> = {}): string {
+        const url = new URL(Routes.DISCORD_API_BASE_URL + path)
+        for (const [key, value] of Object.entries(query)) {
+            url.searchParams.set(key, value.toString())
+        }
+
+        return url.toString()
+    }
+
+    /**
      * @summary The base URL of the Discord API.
      * @description Base endpoint of the Discord API, uses latest REST version.
      */
@@ -25,7 +41,7 @@ class Routes {
      * @returns Parsed route for getting webhook with token, used to get a detailed webhook.
      */
     public static getWebhookWithToken(webhookId: Snowflake, webhookToken: string): string {
-        return `https://discord.com/api/webhooks/${webhookId}/${webhookToken}`
+        return Routes.resolveUrl(`/webhooks/${webhookId}/${webhookToken}`)
     }
 }
 
