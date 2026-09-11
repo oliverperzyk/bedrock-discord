@@ -16,3 +16,12 @@ export { HttpClient } from "./internal/clients/HttpClient"
  * @summary SDK related with webhooks.
  */
 export * from "./sdk/webhooks/Webhook"
+
+/**
+ * @summary SDK related with message and modal components.
+ */
+export { ButtonStyle } from "./models/sdk/components/buttons/enums/ButtonStyle"
+export type { InteractiveButtonStyle } from "./models/sdk/components/buttons/types/InteractiveButtonStyle"
+export { InteractiveButton } from "./sdk/components/buttons/components/InteractiveButton"
+export { LinkButton } from "./sdk/components/buttons/components/LinkButton"
+export { PremiumButton } from "./sdk/components/buttons/components/PremiumButton"
