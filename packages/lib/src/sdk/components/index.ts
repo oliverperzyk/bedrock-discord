@@ -6,6 +6,15 @@ export * from "./buttons/components/LinkButton"
 export * from "./buttons/components/PremiumButton"
 
 /**
+ * @summary SDK related for dropdown components.
+ */
+export * from "./dropdowns/components/ChannelDropdown"
+export * from "./dropdowns/components/MentionableDropdown"
+export * from "./dropdowns/components/RoleDropdown"
+export * from "./dropdowns/components/StringDropdown"
+export * from "./dropdowns/components/UserDropdown"
+
+/**
  * @summary SDK related for group components.
  */
 export * from "./groups/ActionRow"
