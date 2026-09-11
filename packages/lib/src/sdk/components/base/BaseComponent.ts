@@ -15,7 +15,7 @@ abstract class BaseComponent {
      * @summary The type of the component.
      * @description The type of the component, used to determine the type of the component when sending it to the Discord API.
      */
-    protected static readonly componentType: ComponentType
+    protected static readonly componentType: ComponentType | null
 
     /**
      * @summary Gets the component identifier.
