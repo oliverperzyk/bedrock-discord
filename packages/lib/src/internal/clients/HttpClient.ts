@@ -6,6 +6,7 @@ import type { IRequestResponse } from "../../models/internal/clients/http/interf
 import { DebuggerServerStatus } from "../../models/internal/clients/debugger/enums/DebuggerServerStatus"
 import type { IDebuggerServerResponse } from "../../models/internal/clients/debugger/interfaces/IDebuggerServerResponse"
 import { DebuggerHttpTransport } from "./DebuggerHttpTransport"
+import type { SecretString } from "@minecraft/server-admin"
 
 /**
  * @summary Internal HTTP client for Discord API calls.
@@ -65,6 +66,29 @@ class HttpClient {
     }
 
     /**
+     * @summary Merges headers into a default headers map.
+     * @description Merges headers into a default headers map.
+     * @param headers - The headers to merge.
+     * @returns The merged headers.
+     */
+    private static mergeHeaders(headers: readonly HttpHeader[] = []): HttpHeader[] {
+        const headersMap: Map<string, string | SecretString> = new Map<string, string | SecretString>([
+            ["Content-Type", "application/json"],
+            ["Accept", "application/json"],
+            ["User-Agent", "Bedrock-Discord"],
+        ])
+
+        for (const { key, value } of headers) {
+            headersMap.set(key, value)
+        }
+
+        return Array.from(headersMap.entries()).map(([key, value]: [string, string | SecretString]): HttpHeader => ({
+            key,
+            value: String(value),
+        }))
+    }
+
+    /**
      * @summary Performs a request with `@minecraft/server-net`.
      * @description Builds an `HttpRequest`, executes it through the cached server-net client, and maps the result.
      */
@@ -77,7 +101,7 @@ class HttpClient {
         const http: NonNullable<ReturnType<typeof CommunicationMode.http>> = CommunicationMode.http<true>()
         const request: HttpRequest = new serverNet.HttpRequest(HttpClient.resolveUrl(url))
             .setMethod(this.toServerNetMethod(method, serverNet.HttpRequestMethod))
-            .setHeaders(data.headers !== undefined ? [...data.headers] : [])
+            .setHeaders(data.headers !== undefined ? this.mergeHeaders(data.headers) : [])
 
         if (data.body !== undefined) {
             request.setBody(this.serializeBody(data.body))
