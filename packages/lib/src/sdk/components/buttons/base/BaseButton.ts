@@ -69,7 +69,7 @@ abstract class BaseButton extends BaseComponent {
      */
     protected toBaseJSON(): Record<string, unknown> {
         const payload: Record<string, unknown> = {
-            type: (this.constructor as typeof BaseButton).componentType,
+            type: BaseButton.componentType,
         }
         if (this.id !== undefined) payload.id = this.id
         if (this.disabled !== undefined) payload.disabled = this.disabled

@@ -82,7 +82,7 @@ class MediaGallery extends BaseComponent {
     public toJSON(): Record<string, unknown> {
         const items: MediaGalleryItem[] = MediaGallery.assertItems(this.items, true)
         const payload: Record<string, unknown> = {
-            type: (this.constructor as typeof MediaGallery).componentType,
+            type: MediaGallery.componentType,
             items: items.map((item: MediaGalleryItem) => item.toJSON()),
         }
         if (this.id !== undefined) payload.id = this.id

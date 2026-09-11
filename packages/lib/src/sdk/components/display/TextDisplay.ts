@@ -64,7 +64,7 @@ class TextDisplay extends BaseComponent {
      */
     public toJSON(): Record<string, unknown> {
         const payload: Record<string, unknown> = {
-            type: (this.constructor as typeof TextDisplay).componentType,
+            type: TextDisplay.componentType,
             content: TextDisplay.assertContent(this.content),
         }
         if (this.id !== undefined) payload.id = this.id

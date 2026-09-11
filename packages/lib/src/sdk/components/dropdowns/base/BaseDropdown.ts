@@ -209,7 +209,7 @@ abstract class BaseDropdown extends BaseComponent {
         }
 
         const payload: Record<string, unknown> = {
-            type: (this.constructor as typeof BaseDropdown).componentType,
+            type: BaseDropdown.componentType,
             custom_id: BaseDropdown.assertCustomId(this.customId),
         }
         if (this.id !== undefined) payload.id = this.id

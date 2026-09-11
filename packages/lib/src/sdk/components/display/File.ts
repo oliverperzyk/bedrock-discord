@@ -93,7 +93,7 @@ class File extends BaseComponent {
     public toJSON(): Record<string, unknown> {
         const file: IUnfurledMediaItem = { url: File.assertURL(this.url) }
         const payload: Record<string, unknown> = {
-            type: (this.constructor as typeof File).componentType,
+            type: File.componentType,
             file,
         }
         if (this.id !== undefined) payload.id = this.id

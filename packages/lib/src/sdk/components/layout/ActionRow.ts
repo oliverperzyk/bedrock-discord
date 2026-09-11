@@ -86,7 +86,7 @@ class ActionRow<TComponent extends AnyActionRowComponent = BaseButton> extends B
     public toJSON(): Record<string, unknown> {
         const children: TComponent[] = ActionRow.assertComponents<TComponent>(this.components, true)
         const payload: Record<string, unknown> = {
-            type: (this.constructor as typeof ActionRow).componentType,
+            type: ActionRow.componentType,
             components: children.map((component: TComponent) => component.toJSON()),
         }
         if (this.id !== undefined) payload.id = this.id

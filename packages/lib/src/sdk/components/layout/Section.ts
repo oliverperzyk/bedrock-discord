@@ -110,7 +110,7 @@ class Section<TComponent extends AnySectionComponent = TextDisplay> extends Base
     public toJSON(): Record<string, unknown> {
         const children: TComponent[] = Section.assertComponents<TComponent>(this.components, true)
         const payload: Record<string, unknown> = {
-            type: (this.constructor as typeof Section).componentType,
+            type: Section.componentType,
             components: children.map((component: TComponent) => component.toJSON()),
             accessory: Section.assertAccessory(this.accessory).toJSON(),
         }

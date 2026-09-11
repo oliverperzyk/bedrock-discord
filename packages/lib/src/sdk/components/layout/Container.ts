@@ -33,7 +33,7 @@ class Container<TComponent extends AnyContainerComponent = ActionRow> extends Ba
 
     /**
      * @summary Child components in this container.
-     * @description Encapsulated layout and content components. Currently action rows; other v2 children will be accepted as they land.
+     * @description Encapsulated layout and content components: action rows, text displays, sections, media galleries, separators, and files.
      */
     private components: TComponent[] = []
 
@@ -137,7 +137,7 @@ class Container<TComponent extends AnyContainerComponent = ActionRow> extends Ba
     public toJSON(): Record<string, unknown> {
         const children: TComponent[] = Container.assertComponents<TComponent>(this.components, true)
         const payload: Record<string, unknown> = {
-            type: (this.constructor as typeof Container).componentType,
+            type: Container.componentType,
             components: children.map((component: TComponent) => component.toJSON()),
         }
         if (this.id !== undefined) payload.id = this.id
