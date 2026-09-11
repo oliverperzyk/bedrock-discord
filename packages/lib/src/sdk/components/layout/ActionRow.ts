@@ -1,8 +1,10 @@
 import { ComponentType } from "../../../models/sdk/components/base/enums/ComponentType"
+import { ButtonStyle } from "../../../models/sdk/components/buttons/enums/ButtonStyle"
 import type { ActionRowComponents } from "../../../models/sdk/components/groups/action-row/types/ActionRowComponents"
 import type { AnyActionRowComponent } from "../../../models/sdk/components/groups/action-row/types/AnyActionRowComponent"
 import { BaseComponent } from "../base/BaseComponent"
 import { BaseButton } from "../buttons/base/BaseButton"
+import { InteractiveButton } from "../buttons/components/InteractiveButton"
 
 /**
  * @summary Discord action row to group interactive components.
@@ -55,7 +57,7 @@ class ActionRow<TComponent extends AnyActionRowComponent = BaseButton> extends B
 
     /**
      * @summary Appends child components.
-     * @description Adds children of type {@link TComponent} to the end of the row. Use up to five buttons, or a single select. Text inputs in action rows are deprecated.
+     * @description Adds children of type {@link TComponent} to the end of the row. Use up to five buttons with at most one primary style, or a single select. Text inputs in action rows are deprecated.
      * @param components - Components to append.
      * @returns This action row for chaining.
      */
@@ -67,7 +69,7 @@ class ActionRow<TComponent extends AnyActionRowComponent = BaseButton> extends B
 
     /**
      * @summary Replaces all child components.
-     * @description Overwrites the row contents with builders of type {@link TComponent}. Pass up to five buttons, or a single select. Text inputs in action rows are deprecated.
+     * @description Overwrites the row contents with builders of type {@link TComponent}. Pass up to five buttons with at most one primary style, or a single select. Text inputs in action rows are deprecated.
      * @param components - Components that become the full contents of the row.
      * @returns This action row for chaining.
      */
@@ -93,7 +95,7 @@ class ActionRow<TComponent extends AnyActionRowComponent = BaseButton> extends B
 
     /**
      * @summary Validates action row children.
-     * @description Ensures children are a homogeneous group: up to five buttons, or a single select or text input.
+     * @description Ensures children are a homogeneous group: up to five buttons, or a single select or text input. A row of buttons may include at most one primary-style button.
      * @param components - Candidate child components.
      * @param requireNonEmpty - When `true`, rejects an empty row (used when serializing).
      * @returns The validated child list.
@@ -109,10 +111,17 @@ class ActionRow<TComponent extends AnyActionRowComponent = BaseButton> extends B
         if (components.length > ActionRow.MAX_COMPONENTS) {
             throw new RangeError("Action row can contain at most 5 components.")
         }
+        let primaryButtonCount: number = 0
         for (const component of components) {
             if (!(component instanceof BaseComponent)) {
                 throw new TypeError("Action row children must be components.")
             }
+            if (component instanceof InteractiveButton && component.getStyle() === ButtonStyle.PRIMARY) {
+                primaryButtonCount++
+            }
+        }
+        if (primaryButtonCount > 1) {
+            throw new RangeError("Action row can contain at most one primary button.")
         }
         return components.slice()
     }

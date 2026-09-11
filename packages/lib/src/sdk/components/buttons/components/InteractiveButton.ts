@@ -30,7 +30,7 @@ class InteractiveButton extends BaseButton {
 
     /**
      * @summary Button label.
-     * @description Text shown on the button; maximum 80 characters.
+     * @description Text shown on the button. Design guidelines cap this at 34 characters with an emoji and 38 without (API maximum 80).
      */
     private label: string | undefined
 
@@ -101,12 +101,12 @@ class InteractiveButton extends BaseButton {
 
     /**
      * @summary Sets the button label.
-     * @description Text that appears on the button. Maximum 80 characters.
+     * @description Text that appears on the button. At most 34 characters with an emoji, or 38 without.
      * @param label - Button label text.
      * @returns This button for chaining.
      */
     public setLabel(label: string): this {
-        this.label = InteractiveButton.assertLabel(label)
+        this.label = InteractiveButton.assertLabel(label, this.emoji !== undefined)
         return this
     }
 
@@ -126,6 +126,7 @@ class InteractiveButton extends BaseButton {
      * @returns This button for chaining.
      */
     public setEmoji(emoji: IPartialEmoji): this {
+        if (this.label !== undefined) InteractiveButton.assertLabel(this.label, true)
         this.emoji = emoji
         return this
     }
@@ -142,6 +143,7 @@ class InteractiveButton extends BaseButton {
             custom_id: InteractiveButton.assertCustomId(this.customId),
         }
 
+        InteractiveButton.assertLabelOrEmoji(this.label, this.emoji)
         if (this.label !== undefined) payload.label = this.label
         if (this.emoji !== undefined) payload.emoji = this.emoji
         return payload
@@ -177,18 +179,6 @@ class InteractiveButton extends BaseButton {
             throw new TypeError("Interactive buttons cannot use link or premium styles.")
         }
         return style
-    }
-
-    /**
-     * @summary Validates a button label.
-     * @description Ensures the label is a string of at most 80 characters.
-     * @param label - Candidate label.
-     * @returns The validated label.
-     */
-    private static assertLabel(label: string): string {
-        if (typeof label !== "string") throw new TypeError("Button label must be a string.")
-        if (label.length > 80) throw new RangeError("Button label must be at most 80 characters.")
-        return label
     }
 }
 
