@@ -19,6 +19,7 @@ export * from "./dropdowns/components/UserDropdown"
  */
 export * from "./display/File"
 export * from "./display/MediaGalleryItem"
+export * from "./display/Separator"
 export * from "./display/TextDisplay"
 
 /**
