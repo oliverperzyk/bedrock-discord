@@ -1,5 +1,6 @@
 import type { Express } from "express"
 import express from "express"
+import cors from "cors"
 
 /**
  * @summary Singleton manager for the Express application instance.
@@ -25,6 +26,15 @@ class ApplicationInstanceManager {
     public static get instance(): Express {
         if (this.internalInstance === null) {
             this.internalInstance = express()
+            this.internalInstance.use(
+                cors({
+                    optionsSuccessStatus: 204,
+                    allowedHeaders: ["Content-Type", "Authorization"],
+                    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+                    credentials: true,
+                    origin: "*",
+                }),
+            )
         }
 
         return this.internalInstance
