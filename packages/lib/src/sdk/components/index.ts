@@ -37,5 +37,6 @@ export * from "./input/TextInput"
  */
 export * from "./layout/ActionRow"
 export * from "./layout/Container"
+export * from "./layout/Label"
 export * from "./layout/MediaGallery"
 export * from "./layout/Section"
