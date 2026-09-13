@@ -1,5 +1,5 @@
-import { ComponentType } from "../../../models/sdk/components/base/enums/ComponentType"
-import { BaseComponent } from "../base/BaseComponent"
+import { ComponentType } from "../../../../models/sdk/components/base/enums/ComponentType"
+import { BaseComponent } from "../../base/BaseComponent"
 
 /**
  * @summary Discord checkbox for a yes/no modal choice.
