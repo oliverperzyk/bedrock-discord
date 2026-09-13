@@ -26,6 +26,8 @@ export * from "./display/TextDisplay"
  * @summary SDK related for input components.
  */
 export * from "./input/Checkbox"
+export * from "./input/radio/RadioGroup"
+export * from "./input/radio/RadioGroupElement"
 export * from "./input/TextInput"
 
 /**
