@@ -23,6 +23,11 @@ export * from "./display/Separator"
 export * from "./display/TextDisplay"
 
 /**
+ * @summary SDK related for input components.
+ */
+export * from "./input/TextInput"
+
+/**
  * @summary SDK related for layout components.
  */
 export * from "./layout/ActionRow"
