@@ -43,6 +43,27 @@ class Routes {
     public static getWebhookWithToken(webhookId: Snowflake, webhookToken: string): string {
         return Routes.resolveUrl(`/webhooks/${webhookId}/${webhookToken}`)
     }
+
+    /**
+     * @summary Gets a webhook message with token.
+     * @description Builds `GET|PATCH|DELETE /webhooks/{webhook.id}/{webhook.token}/messages/{message.id}` with optional `thread_id` and `with_components` query params.
+     * @param webhookId - The ID of the webhook.
+     * @param webhookToken - The token of the webhook.
+     * @param messageId - The ID of the message.
+     * @param query - Optional Discord query params (`thread_id`, `with_components`).
+     * @returns Parsed route for the webhook message endpoint.
+     */
+    public static getWebhookMessage(
+        webhookId: Snowflake,
+        webhookToken: string,
+        messageId: Snowflake,
+        query: { thread_id?: Snowflake; with_components?: boolean } = {},
+    ): string {
+        const params: Record<string, string | number | boolean> = {}
+        if (query.thread_id !== undefined) params.thread_id = query.thread_id
+        if (query.with_components !== undefined) params.with_components = query.with_components
+        return Routes.resolveUrl(`/webhooks/${webhookId}/${webhookToken}/messages/${messageId}`, params)
+    }
 }
 
 export { Routes }
