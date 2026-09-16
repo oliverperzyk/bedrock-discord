@@ -21,3 +21,8 @@ export * from "./sdk/webhooks/Webhook"
  * @summary SDK related for components.
  */
 export * from "./sdk/builders/components"
+
+/**
+ * @summary SDK related for message polls.
+ */
+export * from "./sdk/builders/message"
