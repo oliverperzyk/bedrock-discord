@@ -1,9 +1,9 @@
-import type { File } from "../../../../../../sdk/components/display/File"
-import type { Separator } from "../../../../../../sdk/components/display/Separator"
-import type { TextDisplay } from "../../../../../../sdk/components/display/TextDisplay"
-import type { ActionRow } from "../../../../../../sdk/components/layout/ActionRow"
-import type { MediaGallery } from "../../../../../../sdk/components/layout/MediaGallery"
-import type { Section } from "../../../../../../sdk/components/layout/Section"
+import type { File } from "../../../../../../sdk/builders/components/display/File"
+import type { Separator } from "../../../../../../sdk/builders/components/display/Separator"
+import type { TextDisplay } from "../../../../../../sdk/builders/components/display/TextDisplay"
+import type { ActionRow } from "../../../../../../sdk/builders/components/layout/ActionRow"
+import type { MediaGallery } from "../../../../../../sdk/builders/components/layout/MediaGallery"
+import type { Section } from "../../../../../../sdk/builders/components/layout/Section"
 
 /**
  * @summary Component that can live in a container.

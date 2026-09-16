@@ -1,5 +1,5 @@
-import type { BaseButton } from "../../../../../../sdk/components/buttons/base/BaseButton"
-import type { BaseDropdown } from "../../../../../../sdk/components/dropdowns/base/BaseDropdown"
+import type { BaseButton } from "../../../../../../sdk/builders/components/buttons/base/BaseButton"
+import type { BaseDropdown } from "../../../../../../sdk/builders/components/dropdowns/base/BaseDropdown"
 
 /**
  * @summary Component that can live in an action row.

@@ -1,4 +1,4 @@
-import type { TextDisplay } from "../../../../../../sdk/components/display/TextDisplay"
+import type { TextDisplay } from "../../../../../../sdk/builders/components/display/TextDisplay"
 
 /**
  * @summary Component that can live in a section.

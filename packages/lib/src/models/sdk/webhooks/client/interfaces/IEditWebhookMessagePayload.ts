@@ -1,4 +1,4 @@
-import type { BaseComponent } from "../../../../../sdk/components/base/BaseComponent"
+import type { BaseComponent } from "../../../../../sdk/builders/components/base/BaseComponent"
 
 /**
  * @summary JSON body for editing a webhook message.

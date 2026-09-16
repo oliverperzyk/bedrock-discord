@@ -20,4 +20,4 @@ export * from "./sdk/webhooks/Webhook"
 /**
  * @summary SDK related for components.
  */
-export * from "./sdk/components"
+export * from "./sdk/builders/components"

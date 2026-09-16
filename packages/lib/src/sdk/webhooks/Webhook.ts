@@ -8,7 +8,7 @@ import type { IEditWebhookMessagePayload } from "../../models/sdk/webhooks/clien
 import type { IModifyWebhookPayload } from "../../models/sdk/webhooks/client/interfaces/IModifyWebhookPayload"
 import type { IWebhook } from "../../models/sdk/webhooks/client/interfaces/IWebhook"
 import type { IWebhookMessageQuery } from "../../models/sdk/webhooks/client/interfaces/IWebhookMessageQuery"
-import { BaseComponent } from "../components/base/BaseComponent"
+import { BaseComponent } from "../builders/components/base/BaseComponent"
 import { ImageDataManager } from "../data/ImageDataManager"
 import { Routes } from "../globals/Routes"
 

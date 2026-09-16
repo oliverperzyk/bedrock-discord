@@ -1,5 +1,5 @@
-import type { BaseButton } from "../../../../../../sdk/components/buttons/base/BaseButton"
-import type { SectionAccessory } from "../../../../../../sdk/components/display/SectionAccessory"
+import type { BaseButton } from "../../../../../../sdk/builders/components/buttons/base/BaseButton"
+import type { SectionAccessory } from "../../../../../../sdk/builders/components/display/SectionAccessory"
 
 /**
  * @summary Component that can be a section accessory.
