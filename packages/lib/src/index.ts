@@ -61,3 +61,6 @@ export type { IResourceFetchOptions } from "./models/sdk/client/interfaces/IReso
 export { ApplicationEmoji } from "./sdk/emojis/ApplicationEmoji"
 export type { IApplicationEmoji } from "./models/sdk/emojis/base/interfaces/IApplicationEmoji"
 export type { IApplicationEmojiEditOptions } from "./models/sdk/emojis/client/interfaces/IApplicationEmojiEditOptions"
+export { GuildEmojiManager } from "./sdk/emojis/managers/GuildEmojiManager"
+export type { IGuildEmojiCreateOptions } from "./models/sdk/emojis/client/interfaces/IGuildEmojiCreateOptions"
+export type { IGuildEmojiEditOptions } from "./models/sdk/emojis/client/interfaces/IGuildEmojiEditOptions"

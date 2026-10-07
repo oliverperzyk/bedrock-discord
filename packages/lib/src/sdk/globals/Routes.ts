@@ -131,6 +131,26 @@ class Routes {
     public static getApplicationEmoji(applicationId: Snowflake, emojiId: Snowflake): string {
         return Routes.resolveUrl(`/applications/${applicationId}/emojis/${emojiId}`)
     }
+    /**
+     * @summary Gets the guild emoji collection route.
+     * @description Used for listing and creating custom guild emojis.
+     * @param guildId - Owning guild snowflake.
+     * @returns Discord API URL.
+     */
+    public static getGuildEmojis(guildId: Snowflake): string {
+        return Routes.resolveUrl(`/guilds/${guildId}/emojis`)
+    }
+
+    /**
+     * @summary Gets a guild emoji item route.
+     * @description Used for retrieving, editing and deleting custom guild emojis.
+     * @param guildId - Owning guild snowflake.
+     * @param emojiId - Custom emoji snowflake.
+     * @returns Discord API URL.
+     */
+    public static getGuildEmoji(guildId: Snowflake, emojiId: Snowflake): string {
+        return Routes.resolveUrl(`/guilds/${guildId}/emojis/${emojiId}`)
+    }
 }
 
 export { Routes }
