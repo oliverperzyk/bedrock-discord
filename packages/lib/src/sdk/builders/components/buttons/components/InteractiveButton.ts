@@ -43,8 +43,6 @@ class InteractiveButton extends BaseButton {
     /**
      * @summary Creates an interactive button.
      * @description Requires a `custom_id` and a non-link, non-premium style.
-     * @param customId - Developer-defined identifier, 1–100 characters.
-     * @param style - Primary, secondary, success, or danger style.
      */
     public constructor() {
         super()

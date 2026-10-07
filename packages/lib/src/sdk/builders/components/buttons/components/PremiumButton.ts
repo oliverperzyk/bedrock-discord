@@ -20,7 +20,6 @@ class PremiumButton extends BaseButton {
     /**
      * @summary Creates a premium button.
      * @description Requires a SKU snowflake. Style is always `ButtonStyle.PREMIUM`.
-     * @param skuId - Identifier of the purchasable SKU.
      */
     public constructor() {
         super()

@@ -34,7 +34,6 @@ class LinkButton extends BaseButton {
     /**
      * @summary Creates a link button.
      * @description Requires a destination URL. Style is always `ButtonStyle.LINK`.
-     * @param url - Destination URL, maximum 512 characters.
      */
     public constructor() {
         super()
