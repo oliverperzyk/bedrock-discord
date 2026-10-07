@@ -91,6 +91,26 @@ class Routes {
     public static getStickerPack(packId: Snowflake): string {
         return Routes.resolveUrl(`/sticker-packs/${packId}`)
     }
+    /**
+     * @summary Gets the guild sticker collection route.
+     * @description Used to list stickers or create a new guild sticker.
+     * @param guildId - Owning guild snowflake.
+     * @returns Discord API URL.
+     */
+    public static getGuildStickers(guildId: Snowflake): string {
+        return Routes.resolveUrl(`/guilds/${guildId}/stickers`)
+    }
+
+    /**
+     * @summary Gets one guild sticker route.
+     * @description Used to fetch, modify or delete a custom sticker.
+     * @param guildId - Owning guild snowflake.
+     * @param stickerId - Sticker snowflake.
+     * @returns Discord API URL.
+     */
+    public static getGuildSticker(guildId: Snowflake, stickerId: Snowflake): string {
+        return Routes.resolveUrl(`/guilds/${guildId}/stickers/${stickerId}`)
+    }
 }
 
 export { Routes }

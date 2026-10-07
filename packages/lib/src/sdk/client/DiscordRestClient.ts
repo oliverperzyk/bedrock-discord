@@ -1,3 +1,6 @@
+import type { ISticker } from "../../models/sdk/stickers/base/interfaces/ISticker"
+import type { IStickerFile } from "../../models/sdk/stickers/client/interfaces/IStickerFile"
+import type { StickerMultipartUploader } from "../../models/sdk/stickers/client/types/StickerMultipartUploader"
 import type { HttpHeader } from "@minecraft/server-net"
 import { HttpClient } from "../../internal/clients/HttpClient"
 import type { IRequestResponse } from "../../models/internal/clients/http/interfaces/IRequestResponse"
@@ -30,6 +33,51 @@ class DiscordRestClient {
      * @description Prevents requests started before invalidation from restoring stale entries.
      */
     private generation = 0
+
+    /**
+     * @summary Binary upload transport.
+     * @description Optional adapter for multipart files unsupported by the Bedrock HTTP string-body API.
+     */
+    private multipartUploader: StickerMultipartUploader | null = null
+
+    /**
+     * @summary Configures binary sticker uploads.
+     * @description The adapter owns multipart encoding and delivery; normal JSON routes still use HttpClient.
+     * @param uploader - Transport that sends the file bytes without conversion to a string.
+     * @returns This client for chaining.
+     */
+    public setMultipartUploader(uploader: StickerMultipartUploader): this {
+        if (typeof uploader !== "function") throw new TypeError("Multipart uploader must be a function.")
+        this.multipartUploader = uploader
+        return this
+    }
+
+    /**
+     * @summary Sends a sticker upload.
+     * @description Requires an upload adapter; passes separate form fields and exact file bytes without JSON serialization.
+     * @param url - Guild sticker creation URL.
+     * @param fields - Name, description and tags form fields.
+     * @param file - File metadata and binary contents.
+     * @param reason - Optional audit reason.
+     * @returns Upload response; adapter exceptions become failed response envelopes.
+     */
+    public async uploadSticker(
+        url: string,
+        fields: Readonly<Record<string, string>>,
+        file: IStickerFile,
+        reason?: string,
+    ): Promise<IRequestResponse<ISticker>> {
+        const headers = this.getHeaders(reason)
+        if (this.multipartUploader === null)
+            throw new TypeError(
+                "Configure a multipart upload adapter with DiscordRestClient.setMultipartUploader before creating stickers.",
+            )
+        try {
+            return await this.multipartUploader({ url, method: "POST", headers, fields, file })
+        } catch (error: unknown) {
+            return { success: false, statusCode: 0, headers: [], error }
+        }
+    }
 
     /**
      * @summary Configures authentication.
@@ -155,6 +203,7 @@ class DiscordRestClient {
         reason?: string,
     ): Promise<IRequestResponse<D>> {
         const headers = this.getHeaders(reason)
+        if (body !== undefined) headers.push({ key: "Content-Type", value: "application/json" })
         try {
             return await HttpClient[method]<D>(url, headers, { body })
         } catch (error: unknown) {
