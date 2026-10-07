@@ -4,7 +4,7 @@ import type { StickerMultipartUploader } from "../../models/sdk/stickers/client/
 import type { HttpHeader } from "@minecraft/server-net"
 import { HttpClient } from "../../internal/clients/HttpClient"
 import type { IRequestResponse } from "../../models/internal/clients/http/interfaces/IRequestResponse"
-import type { IStickerFetchOptions } from "../../models/sdk/stickers/client/interfaces/IStickerFetchOptions"
+import type { IResourceFetchOptions } from "../../models/sdk/client/interfaces/IResourceFetchOptions"
 
 /**
  * @summary Authenticated Discord REST client.
@@ -169,7 +169,7 @@ class DiscordRestClient {
     public async fetchResource<T>(
         key: string,
         load: () => Promise<T | null>,
-        options: IStickerFetchOptions = {},
+        options: IResourceFetchOptions = {},
     ): Promise<T | null> {
         this.getHeaders()
         const cache = options.cache ?? true

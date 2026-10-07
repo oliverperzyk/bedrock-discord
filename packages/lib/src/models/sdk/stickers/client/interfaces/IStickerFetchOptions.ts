@@ -1,8 +1,10 @@
+import type { IResourceFetchOptions } from "../../../client/interfaces/IResourceFetchOptions"
+
 /**
  * @summary Sticker fetch controls.
- * @description Controls client-local cache reads and writes for sticker resources.
+ * @description Backwards-compatible specialization of the shared REST cache controls.
  */
-interface IStickerFetchOptions {
+interface IStickerFetchOptions extends IResourceFetchOptions {
     /**
      * @summary Cache participation.
      * @description Defaults to true; false bypasses cache reads and writes.
@@ -10,7 +12,7 @@ interface IStickerFetchOptions {
     readonly cache?: boolean
     /**
      * @summary Force refresh.
-     * @description Defaults to false; true bypasses cache reads while respecting cache writes.
+     * @description Defaults to false; true skips cached reads while respecting cache writes.
      */
     readonly force?: boolean
 }

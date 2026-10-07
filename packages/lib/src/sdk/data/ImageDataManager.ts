@@ -1,6 +1,6 @@
 /**
  * @summary Utilities for Discord image data URIs.
- * @description Validates Data URI strings Discord accepts for image fields such as webhook avatars. Supports JPG, PNG, and GIF with base64 payloads. Does not encode or decode image bytes.
+ * @description Validates avatar and emoji data URIs with separate supported formats; measures emoji bytes without decoding images.
  * @example
  * ```ts
  * ImageDataManager.isImageData("data:image/png;base64,iVBORw0KGgo=")
@@ -28,6 +28,35 @@ class ImageDataManager {
      */
     public static isImageData(value: unknown): value is string {
         return typeof value === "string" && this.IMAGE_DATA_PATTERN.test(value)
+    }
+    /**
+     * @summary Checks emoji image data.
+     * @description Accepts canonical base64 JPEG, PNG, GIF, WebP and AVIF URIs without changing avatar validation.
+     * @param value - Candidate image-data URI.
+     * @returns True when the URI contains valid nonempty encoded bytes.
+     */
+    public static isEmojiImageData(value: unknown): value is string {
+        return this.getEmojiImageDataSize(value) !== null
+    }
+
+    /**
+     * @summary Measures encoded emoji image data.
+     * @description Validates MIME type, base64 padding and unused trailing bits; calculates byte size without decoding or using Node APIs.
+     * @param value - Candidate image-data URI.
+     * @returns Decoded byte count, or null for malformed or unsupported data.
+     */
+    public static getEmojiImageDataSize(value: unknown): number | null {
+        if (typeof value !== "string") return null
+        const match = /^data:image\/(?:jpeg|png|gif|webp|avif);base64,([A-Za-z0-9+/]+={0,2})$/.exec(value)
+        const payload = match?.[1]
+        if (!payload || payload.length % 4 !== 0) return null
+        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+        const padding = payload.endsWith("==") ? 2 : payload.endsWith("=") ? 1 : 0
+        if (padding !== 0) {
+            const last = alphabet.indexOf(payload[payload.length - padding - 1]!)
+            if ((last & (padding === 2 ? 15 : 3)) !== 0) return null
+        }
+        return (payload.length / 4) * 3 - padding
     }
 }
 

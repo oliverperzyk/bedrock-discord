@@ -48,3 +48,13 @@ export type { IStickerFile } from "./models/sdk/stickers/client/interfaces/IStic
 export type { IStickerMultipartRequest } from "./models/sdk/stickers/client/interfaces/IStickerMultipartRequest"
 export type { StickerContentType } from "./models/sdk/stickers/client/types/StickerContentType"
 export type { StickerMultipartUploader } from "./models/sdk/stickers/client/types/StickerMultipartUploader"
+
+/**
+ * @summary SDK emoji resources.
+ * @description Public emoji snapshots and shared REST fetch controls.
+ */
+export { Emoji } from "./sdk/emojis/Emoji"
+export type { IEmoji } from "./models/sdk/emojis/base/interfaces/IEmoji"
+export type { IPartialEmoji } from "./models/sdk/emojis/base/interfaces/IPartialEmoji"
+export type { IEmojiUser } from "./models/sdk/emojis/base/interfaces/IEmojiUser"
+export type { IResourceFetchOptions } from "./models/sdk/client/interfaces/IResourceFetchOptions"
