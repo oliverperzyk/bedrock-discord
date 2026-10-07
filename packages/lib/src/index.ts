@@ -64,3 +64,6 @@ export type { IApplicationEmojiEditOptions } from "./models/sdk/emojis/client/in
 export { GuildEmojiManager } from "./sdk/emojis/managers/GuildEmojiManager"
 export type { IGuildEmojiCreateOptions } from "./models/sdk/emojis/client/interfaces/IGuildEmojiCreateOptions"
 export type { IGuildEmojiEditOptions } from "./models/sdk/emojis/client/interfaces/IGuildEmojiEditOptions"
+export { ApplicationEmojiManager } from "./sdk/emojis/managers/ApplicationEmojiManager"
+export type { IApplicationEmojiCreateOptions } from "./models/sdk/emojis/client/interfaces/IApplicationEmojiCreateOptions"
+export type { IApplicationEmojisResponse } from "./models/sdk/emojis/client/interfaces/IApplicationEmojisResponse"
