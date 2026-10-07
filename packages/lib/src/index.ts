@@ -38,3 +38,6 @@ export { StickerFormatType } from "./models/sdk/stickers/base/enums/StickerForma
 export type { ISticker } from "./models/sdk/stickers/base/interfaces/ISticker"
 export type { IStickerUser } from "./models/sdk/stickers/base/interfaces/IStickerUser"
 export type { IStickerFetchOptions } from "./models/sdk/stickers/client/interfaces/IStickerFetchOptions"
+export { StickerPack } from "./sdk/stickers/StickerPack"
+export type { IStickerPack } from "./models/sdk/stickers/base/interfaces/IStickerPack"
+export type { IStickerPacksResponse } from "./models/sdk/stickers/client/interfaces/IStickerPacksResponse"

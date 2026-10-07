@@ -73,6 +73,24 @@ class Routes {
     public static getSticker(stickerId: Snowflake): string {
         return Routes.resolveUrl(`/stickers/${stickerId}`)
     }
+    /**
+     * @summary Gets the pack listing route.
+     * @description Builds the URL for all available standard sticker packs.
+     * @returns Discord API URL.
+     */
+    public static getStickerPacks(): string {
+        return Routes.resolveUrl("/sticker-packs")
+    }
+
+    /**
+     * @summary Gets one pack route.
+     * @description Builds the resource URL for a standard sticker pack.
+     * @param packId - Pack snowflake.
+     * @returns Discord API URL.
+     */
+    public static getStickerPack(packId: Snowflake): string {
+        return Routes.resolveUrl(`/sticker-packs/${packId}`)
+    }
 }
 
 export { Routes }
