@@ -1,3 +1,8 @@
+import { mock } from "bun:test"
+
+// Minecraft APIs are host-provided; resource tests intercept HTTP before these are used.
+mock.module("@minecraft/server", () => ({ system: {}, world: {} }))
+
 /**
  * @summary Test environment for the library.
  * @description A class that initializes the test environment for the library.

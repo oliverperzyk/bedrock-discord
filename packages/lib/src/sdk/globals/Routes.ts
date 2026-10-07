@@ -64,6 +64,15 @@ class Routes {
         if (query.with_components !== undefined) params.with_components = query.with_components
         return Routes.resolveUrl(`/webhooks/${webhookId}/${webhookToken}/messages/${messageId}`, params)
     }
+    /**
+     * @summary Gets a sticker route.
+     * @description Builds the global sticker resource URL.
+     * @param stickerId - Sticker snowflake.
+     * @returns Discord API URL.
+     */
+    public static getSticker(stickerId: Snowflake): string {
+        return Routes.resolveUrl(`/stickers/${stickerId}`)
+    }
 }
 
 export { Routes }

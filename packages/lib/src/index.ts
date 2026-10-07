@@ -26,3 +26,15 @@ export * from "./sdk/builders/components"
  * @summary SDK related for message polls.
  */
 export * from "./sdk/builders/message"
+
+/**
+ * @summary SDK sticker resources and authentication.
+ * @description Public models and REST operations for Discord stickers.
+ */
+export { DiscordRestClient } from "./sdk/client/DiscordRestClient"
+export { Sticker } from "./sdk/stickers/Sticker"
+export { StickerType } from "./models/sdk/stickers/base/enums/StickerType"
+export { StickerFormatType } from "./models/sdk/stickers/base/enums/StickerFormatType"
+export type { ISticker } from "./models/sdk/stickers/base/interfaces/ISticker"
+export type { IStickerUser } from "./models/sdk/stickers/base/interfaces/IStickerUser"
+export type { IStickerFetchOptions } from "./models/sdk/stickers/client/interfaces/IStickerFetchOptions"
